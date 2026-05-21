@@ -12,6 +12,11 @@ This repository contains a few shortcuts that I use with [Obsidian](https://obsi
 | Blank by default                                  | Copy line(s) up                             | [tzarick](https://github.com/tzarick)       |
 | Blank by default                                  | Insert line below/above current line        | [Vinzent](https://github.com/Vinzent03)     |
 | Blank by default                                  | clear current line                          | [renmu123](https://github.com/renmu123)     |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>0</kbd>  | Clear line formatting                       |                                             |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>1</kbd>  | Toggle heading 1                            |                                             |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>2</kbd>  | Toggle heading 2                            |                                             |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>3</kbd>  | Toggle heading 3                            |                                             |
+| <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>4</kbd>  | Toggle heading 4                            |                                             |
 
 ## Demo
 

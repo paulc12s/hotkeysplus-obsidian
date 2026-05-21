@@ -107,6 +107,66 @@ export default class HotkeysPlus extends Plugin {
           !this.app.vault.getConfig('readableLineLength'),
         ),
     });
+
+    this.addCommand({
+      id: 'clear-formatting',
+      name: 'Clear line formatting',
+      callback: () => this.clearFormatting(),
+      hotkeys: [
+        {
+          modifiers: ['Alt', 'Mod'],
+          key: '0',
+        },
+      ],
+    });
+
+    this.addCommand({
+      id: 'toggle-heading-1',
+      name: 'Toggle line to heading 1',
+      callback: () => this.toggleHeading(1),
+      hotkeys: [
+        {
+          modifiers: ['Alt', 'Mod'],
+          key: '1',
+        },
+      ],
+    });
+
+    this.addCommand({
+      id: 'toggle-heading-2',
+      name: 'Toggle line to heading 2',
+      callback: () => this.toggleHeading(2),
+      hotkeys: [
+        {
+          modifiers: ['Alt', 'Mod'],
+          key: '2',
+        },
+      ],
+    });
+
+    this.addCommand({
+      id: 'toggle-heading-3',
+      name: 'Toggle line to heading 3',
+      callback: () => this.toggleHeading(3),
+      hotkeys: [
+        {
+          modifiers: ['Alt', 'Mod'],
+          key: '3',
+        },
+      ],
+    });
+
+    this.addCommand({
+      id: 'toggle-heading-4',
+      name: 'Toggle line to heading 4',
+      callback: () => this.toggleHeading(4),
+      hotkeys: [
+        {
+          modifiers: ['Alt', 'Mod'],
+          key: '4',
+        },
+      ],
+    });
   }
 
   clearCurrentLine(): void {
@@ -310,6 +370,35 @@ export default class HotkeysPlus extends Plugin {
       return '![[';
     } else {
       return '';
+    }
+  }
+
+  clearFormatting(): void {
+    const view = this.app.workspace.getActiveViewOfType(MarkdownView);
+    if (!view) return;
+
+    const editor = view.editor;
+    const lineNumber = editor.getCursor().line;
+    const lineText = editor.getLine(lineNumber);
+    const stripped = lineText.replace(/^(#{1,6}\s+|>\s|[-*]\s\[.\]\s|[-*]\s|\d+\.\s)/, '');
+    editor.setLine(lineNumber, stripped);
+  }
+
+  toggleHeading(level: number): void {
+    const view = this.app.workspace.getActiveViewOfType(MarkdownView);
+    if (!view) return;
+
+    const editor = view.editor;
+    const lineNumber = editor.getCursor().line;
+    const lineText = editor.getLine(lineNumber);
+    const prefix = '#'.repeat(level) + ' ';
+
+    const stripped = lineText.replace(/^#{1,6}\s+/, '');
+
+    if (lineText.startsWith(prefix)) {
+      editor.setLine(lineNumber, stripped);
+    } else {
+      editor.setLine(lineNumber, prefix + stripped);
     }
   }
 
